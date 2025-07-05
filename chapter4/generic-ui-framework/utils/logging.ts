@@ -3,36 +3,27 @@
 import { createLogger, format, transports } from "winston"; // Import necessary components from winston
 
 // Create and configure the logger instance
+import * as fs from "fs";
+// Ensure logs directory exists
+if (!fs.existsSync("logs")) {
+  fs.mkdirSync("logs");
+}
 
 const logger = createLogger({
-  level: "info", // Set the default logging level to 'info'. Logs at this level and above will be displayed.
-
+  level: "info",
   format: format.combine(
-    // Combine multiple log formats
-
-    format.simple() // Simple format: displays message, level, and timestamp
+    format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    format.printf(({ timestamp, level, message }) => `${timestamp} [${level}]: ${message}`)
   ),
-
   transports: [
-    // Define where logs should be transported (e.g., console, file, HTTP)
-
     new transports.Console({
-      // Transport logs to the console
-
       format: format.combine(
-        // Combine formats specifically for console output
-
-        format.colorize(), // Add colors to log levels (e.g., info: green, warn: yellow, error: red)
-
-        format.simple() // Keep console output simple
+        format.colorize(),
+        format.printf(({ timestamp, level, message }) => `${timestamp} [${level}]: ${message}`)
       ),
     }),
-
-    // Add other transports here, e.g., to write logs to a file:
-
-    // new transports.File({ filename: 'logs/error.log', level: 'error' }),
-
-    // new transports.File({ filename: 'logs/combined.log' }),
+    new transports.File({ filename: 'logs/error.log', level: 'error' }),
+    new transports.File({ filename: 'logs/combined.log' })
   ],
 });
 

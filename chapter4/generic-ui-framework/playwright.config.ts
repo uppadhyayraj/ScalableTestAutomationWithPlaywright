@@ -1,7 +1,7 @@
 // playwright.config.ts
 
 import { defineConfig, devices } from "@playwright/test";
-
+import { envConfig } from "./config/environments";
 export default defineConfig({
   // Specifies the directory where your test files are located.
 
@@ -34,7 +34,7 @@ export default defineConfig({
 
     // Sets the base URL for all page navigations. This allows you to use relative paths in your tests.
 
-    baseURL: "https://www.saucedemo.com",
+    baseURL: envConfig.baseUrl,
 
     // Sets the maximum time (in milliseconds) for navigation actions to complete.
 
