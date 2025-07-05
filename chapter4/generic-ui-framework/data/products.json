@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "name": "Sauce Labs Backpack",
+    "price": 29.99,
+    "description": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection."
+  },
+
+  {
+    "id": 1,
+    "name": "Sauce Labs Bolt T-Shirt",
+    "price": 15.99,
+    "description": "Get your testing superhero on with the Sauce Labs Bolt T-Shirt."
+  },
+
+  {
+    "id": 2,
+    "name": "Sauce Labs Onesie",
+    "price": 7.99,
+    "description": "Product that you can wrap yourself in."
+  }
+]
